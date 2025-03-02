@@ -12,8 +12,6 @@ export class MessageTagsEvent {
   @On('messageCreate')
   public onMessageCreate(@Context() [event]: ContextOf<'messageCreate'>) {
 
-    this.logger.verbose('onMessageCreate', event)
-
     const response = this.messageTag.execute({ userId: event.author.id })
 
     if (!response) return

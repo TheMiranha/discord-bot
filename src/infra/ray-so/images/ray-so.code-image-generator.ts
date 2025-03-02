@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, Logger } from "@nestjs/common";
 import { CodeImageGeneratorGateway } from "src/app/gateways/code-image-generator.gateway";
 import { randomUUID } from 'node:crypto'
 import * as fs from 'fs'
@@ -13,9 +13,11 @@ const FOLDER_PATH = 'code-image-generator-files'
 @Injectable()
 export class RaySoCodeImageGenerator implements CodeImageGeneratorGateway {
 
+  private readonly logger = new Logger(RaySoCodeImageGenerator.name)
+
   async generateImage({ title, code, language }: { title: string, code: string, language: string }): Promise<string> {
 
-    const response = await fetch(EnvConfig.CODE_IMAGE_GENERATOR_URL + '/api?theme=vercel', {
+    const response = await fetch(EnvConfig.CODE_IMAGE_GENERATOR_URL + 'api?theme=vercel', {
       method: 'POST',
       body: JSON.stringify({
         code,
@@ -26,6 +28,8 @@ export class RaySoCodeImageGenerator implements CodeImageGeneratorGateway {
       headers: {
         'Content-Type': 'application/json'
       }
+    }).catch(error => {
+      this.logger.error(error)
     })
 
     if (!fs.existsSync(FOLDER_PATH)) await mkdir(FOLDER_PATH);

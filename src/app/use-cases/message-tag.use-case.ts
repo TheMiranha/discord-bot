@@ -7,8 +7,6 @@ export class MessageTagUseCase {
 
   execute({ userId }: { userId: string }) {
 
-    this.logger.verbose('executed', { userId })
-
     if (userId === '705176526546665604') {
       return '🦁'
     }
