@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   username: EnvConfig.DATABASE_USERNAME,
   password: EnvConfig.DATABASE_PASSWORD,
   database: EnvConfig.DATABASE_DATABASE,
-  migrations: ['dist/infra/database/typeORM/migrations/*{.js,.ts}'],
+  migrations: ['dist/infra/database/migrations/*{.js,.ts}'],
   entities: [
     UserPresence
   ],

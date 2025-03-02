@@ -9,7 +9,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:with-migrations": "npm run migration:generate -- -d src/infra/database/data-source.ts && npm run build && npm run migration:run -- -d src/infra/database/data-source.ts && npm start",
+    "start:with-migrations": "npm run migration:generate --ch && npm run build && npm run migration:run && npm start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",

@@ -6,13 +6,13 @@ export class UserPresence {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('bigint')
+  @Column('varchar')
   guildId: string;
 
-  @Column('bigint')
+  @Column('varchar')
   userId: string;
 
-  @Column('bigint')
+  @Column('int')
   timeInMinutes: number
 
 }
